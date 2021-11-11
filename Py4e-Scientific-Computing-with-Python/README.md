@@ -1,0 +1,1 @@
+Notes and exercises from the _Py4e_ and _freeCourseCamp_ **Python**- course.
