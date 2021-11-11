@@ -1,3 +1,3 @@
-## Notes and exercises from the SQLbolt course.
+## Notes and exercises from the SQLBolt course.
 
 - Hands-on course: [sqlbolt.com](https://sqlbolt.com/)
