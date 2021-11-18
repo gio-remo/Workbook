@@ -1,6 +1,5 @@
 -- L2: https://sqlbolt.com/lesson/select_queries_with_constraints
 
-
 SELECT col1, col2 FROM mytable
 WHERE col1="xxx" AND col2="yyy";
 
@@ -18,7 +17,6 @@ WHERE col1="xxx" AND col2="yyy";
 
 -- Number does not exist in a list
 -- NOT IN(2,3,4)
-
 
 -- Exercises
 

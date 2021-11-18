@@ -1,6 +1,5 @@
 -- L7: https://sqlbolt.com/lesson/select_queries_with_outer_joins
 
-
 -- Exercises
 
 -- 7.1 Find the list of all buildings that have employees

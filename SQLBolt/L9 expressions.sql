@@ -1,6 +1,5 @@
 -- https://sqlbolt.com/lesson/select_queries_with_expressions
 
-
 -- Exercises
 
 -- 9.1 List all movies and their combined sales in millions of dollars

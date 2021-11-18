@@ -1,6 +1,5 @@
 -- L4: https://sqlbolt.com/lesson/filtering_sorting_query_results
 
-
 -- Unique results
 SELECT DISTINCT col1 FROM mytable
 
@@ -11,7 +10,6 @@ ORDER BY col1 ASC
 -- Limited rows
 SELECT * FROM mytable
 LIMIT num_rows OFFSET num_offset
-
 
 -- Exercises
 

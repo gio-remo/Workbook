@@ -1,6 +1,5 @@
 -- L12: https://sqlbolt.com/lesson/select_queries_order_of_execution
 
-
 -- FROM, JOIN
 -- WHERE (rows that do not satisfy the constraint are discarded)
 -- GROUP BY (when you have aggregate functions in your query)

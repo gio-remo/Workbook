@@ -1,6 +1,5 @@
 -- L8: https://sqlbolt.com/lesson/select_queries_with_nulls
 
-
 -- Exercises
 
 -- 8.1 Find the name and role of all employees who have not been assigned to a building

@@ -1,12 +1,10 @@
 -- L1: https://sqlbolt.com/lesson/select_queries_introduction
 
-
 -- SELECT query for a specific columns
 SELECT col1, col2 FROM mytable
 
 -- SELECT query for all columns
 SELECT * FROM mytable
-
 
 -- Exercises
 

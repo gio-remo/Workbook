@@ -1,6 +1,5 @@
 -- L11: https://sqlbolt.com/lesson/select_queries_with_aggregates_pt_2
 
-
 -- Exercises
 
 -- 11.1 Find the number of Artists in the studio (without a HAVING clause)

@@ -1,6 +1,5 @@
 -- L6: https://sqlbolt.com/lesson/select_queries_with_joins
 
-
 -- Exercises
 
 -- 6.1 Find the domestic and international sales for each movie

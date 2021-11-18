@@ -1,6 +1,5 @@
 -- L10: https://sqlbolt.com/lesson/select_queries_with_aggregates
 
-
 -- COUNT()
 -- MIN()
 -- MAX()

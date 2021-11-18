@@ -1,6 +1,5 @@
 -- L3: https://sqlbolt.com/lesson/select_queries_with_constraints_pt_2
 
-
 -- Case sensitive exact string comparison
 col_name = "abc"
 
@@ -18,9 +17,8 @@ col_name LIKE "%AT%"
 -- (matches "AT", "ATTIC", "CAT" or even "BATS")
 
 -- Anywhere in a string to match a SINGLE character
-col_name LIKE "AT_"
+col_name LIKE "AN_"
 -- (matches "AND", but not "AN")
-
 
 -- Exercises
 
