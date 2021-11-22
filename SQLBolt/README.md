@@ -1,3 +1,5 @@
 ## Notes and exercises from the SQLBolt course.
 
-- Hands-on course: [sqlbolt.com](https://sqlbolt.com/)
+[sqlbolt.com](https://sqlbolt.com/) is an easy, practical way to review basic SQL.
+
+Around twenty short lessons about the main commands related to DDL, DML, DQL.
