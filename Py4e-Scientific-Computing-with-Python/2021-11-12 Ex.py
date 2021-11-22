@@ -3,7 +3,7 @@
 # Once “done” is entered, print out the total, count, and average of the numbers. 
 # If the user enters anything other than a number, detect their mistake using 
 # try and except and print an error message and skip to the next number.
-"""""
+
 sum = 0
 count = 0
 
@@ -26,7 +26,6 @@ while True:
     
     count += 1
     sum += num
-"""
 
 # Exercise 5.2
 # Write another program that prompts for a list of numbers as above and at 
