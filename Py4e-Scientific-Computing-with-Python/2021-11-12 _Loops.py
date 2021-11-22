@@ -55,22 +55,50 @@ print(largest) # max
 
 
 #####
-# L14 - Iterations: More Patterns XXXX
+# L14 - Iterations: More Patterns
 #####
 
+# Counting
 count=0
 print(count)
-
 for i in [3,4,6,34,67,43,2,1]:
-    count+=1 # counting
+    count+=1
     print(count)
 
 
+# Summing
 sum=0
 print(sum)
-
 for i in [3,4,6,34,67,43,2,1]:
-    sum+=i # summing
+    sum+=i
     print(sum)
 
 
+# Average
+count=0
+sum=0
+for i in [3,4,6,34,67,43,2,1]:
+    count+=1
+    sum+=i
+    print(sum/count)
+
+
+# Searching
+found=False
+for i in [1,8,52,45,96,3,25,7]:
+    if i==25:
+        found=True
+        print(found, i)
+        break
+    print(found, i)
+
+
+# Smallest
+smallest=None
+for i in [1,8,52,45,96,3,25,7]:
+    if smallest is None:
+        smallest=i
+    elif i < smallest:
+        smallest=i
+
+print("Smallest ", smallest)
