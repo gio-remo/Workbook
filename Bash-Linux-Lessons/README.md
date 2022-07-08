@@ -10,6 +10,8 @@ Have fun!
 
 PS: Why CC BY?
 
-- During those four months I was paid by the Italian Ministry of Education. Therefore, I believe the materials/knowledge I developed should be open access to everyone.
+ During those four months I was paid by the Italian Ministry of Education. Therefore, I believe the materials/knowledge I developed should be open access to everyone.
 
-- Do you agree if your work is used for commercial purposes? Yes, I do. At the end of the day, what it really matters is that students learn and undestand the topics. So, if someone think that my exercises are worth enough for something you need to pay, I am happy with it. But why? Because the Italian school publishing industry sucks.
+- Do you agree if your work is used for commercial purposes? Yes, I do. At the end of the day, what it really matters is that students learn and undestand the topics. So, if someone think that my exercises are worth enough for something you need to pay, I am happy with it. But why? Because the Italian school publishing industry sucks. They make easy money with 10 years old books. They change the ISBN almost every year without significant variations, putting a spoke in second hand shops' wheel.
+    
+    - **I believe Education should be free, inclusive and for everyone.**  Forcing (rich and poor) families to spend 200/400€ for rotten books, it's none of that.
