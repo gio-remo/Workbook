@@ -1,5 +1,5 @@
 #####
-# L16 - Python Dictionaries
+# L22 - Python Dictionaries
 #####
 
 bag = dict()
@@ -15,7 +15,7 @@ print(other)
 
 
 #####
-# L17 - Dictionaries: Common Applications
+# L23 - Dictionaries: Common Applications
 #####
 
 d = dict()
@@ -35,7 +35,7 @@ print(counts.get('al')) # 2
 
 
 #####
-# L18 - Dictionaries and Loops
+# L24 - Dictionaries and Loops
 #####
 
 bag = dict()

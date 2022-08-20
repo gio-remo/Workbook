@@ -1,12 +1,12 @@
 #####
-# L13 - Reading Files
+# L17 - Reading Files
 #####
 
 # open()
 # fhand = open(filename, mode)
 
 #####
-# L14 - Files as a sequence
+# L18 - Files as a sequence
 #####
 
 # Printing lines

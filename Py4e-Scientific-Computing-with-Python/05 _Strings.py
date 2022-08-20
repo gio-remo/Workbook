@@ -1,5 +1,5 @@
 #####
-# L11 - Strings in Pyhton
+# L15 - Strings in Pyhton
 #####
 
 word = "ciao"
@@ -21,7 +21,7 @@ for l in word :
 print(count)
 
 #####
-# L12 - Intermediate Strings
+# L16 - Intermediate Strings
 #####
 
 # Slicing Strings

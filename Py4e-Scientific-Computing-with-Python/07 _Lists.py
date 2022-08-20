@@ -1,5 +1,5 @@
 #####
-# L14 - Python Lists
+# L19 - Python Lists
 #####
 
 x = [1, 50, "yo"]
@@ -7,7 +7,7 @@ print(len(x)) # 3
 
 
 #####
-# L15 - Working with Lists
+# L20 - Working with Lists
 #####
 
 a = [1, 2]
@@ -35,7 +35,7 @@ print(sum(x)) # 197
 
 
 #####
-# L15 - Strings and Lists
+# L21 - Strings and Lists
 #####
 
 stringa = "a black table"

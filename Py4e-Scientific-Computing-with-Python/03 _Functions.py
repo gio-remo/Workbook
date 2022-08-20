@@ -1,5 +1,5 @@
 ####
-# L9 - Python Functions
+# L10 - Python Functions
 ####
 
 def thing():
@@ -17,7 +17,7 @@ welcome(name)
 
 
 #####
-# L10 - Build your own Functions
+# L11 - Build your own Functions
 #####
 
 def greet(l):
