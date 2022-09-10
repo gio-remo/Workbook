@@ -2,6 +2,16 @@
 
 [fasteR](https://github.com/matloff/fasteR) di Norm Matloff
 
+* [Lesson 2: First R Steps](#lesson-2-first-r-steps)
+* [Lesson 3: Vectors and Indices](#lesson-3-vectors-and-indices)
+* [Lesson 4: More on Vectors](#lesson-4-more-on-vectors)
+* [Lesson 5: On to Data Frames!](#lesson-5-on-to-data-frames)
+* [Lesson 6: The R Factor Class]
+* [Lesson 7: Extracting Rows/Columns from Data Frames]
+* [Lesson 8: More Examples of Extracting Rows, Columns]
+* [Lesson 9: The tapply Function]
+* [Lesson 10: Data Cleaning]
+
 ---
 
 ## Lesson 2: First R Steps
