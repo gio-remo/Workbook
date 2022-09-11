@@ -48,18 +48,18 @@ Lets graph Nile:
 
 `hist(Nile)`
 
-<img src="L2-1.gif" width="300">
+<img src="img/L2-1.gif" width="300">
 
 
 **MY TURN**
 
 `hist(Nile, breaks=20)`
 
-<img src="L2-2.gif" width="300">
+<img src="img/L2-2.gif" width="300">
 
 `hist(Nile, breaks=20, col='blue', border='red', labels=TRUE)`
 
-<img src="L2-3.gif" width="300">
+<img src="img/L2-3.gif" width="300">
 
 ---
 
@@ -317,4 +317,66 @@ Find the number of cases in which the tooth length was less than 16.
 [1] 22
 > sum(tg[1] < 16)
 [1] 22
+```
+
+---
+
+## Lesson 6: R Factor Class
+
+Factors are used when we have *categorical* variables.
+
+```
+> class(ToothGrowth)
+[1] "data.frame"
+
+> class(ToothGrowth$supp)
+[1] "factor"
+
+> levels(ToothGrowth$supp)
+[1] "OJ" "VC"
+```
+
+We see that there are two categories (levels), OJ/VC.
+
+## Lesson 7: Extracting Rows/Columns from Data Frames
+
+We saw how to extract vector elements:
+
+```
+> which(Nile>1200)
+[1]  4  8  9 22 24 25 26
+> Nile[which(Nile>1200)]
+[1] 1210 1230 1370 1210 1250 1260 1220
+```
+
+Let's compare mean tooth length for the two types of supplements (*ToothGrowth*):
+
+```
+> tg<-ToothGrowth
+
+# OJ rows
+> suppOJ <- which(tg$sup == 'OJ')
+
+# Indexes of tg where supp is OJ
+> suppOJ
+ [1] 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59
+[30] 60
+
+# Mean of tooth length (first element in tg), given the indexes where supp is OJ
+> mean(tg[suppOJ,1])
+[1] 20.66333
+
+# Similarly
+> suppVC <- which(tg$supp == 'VC')
+> mean(tg[suppVC,1])
+[1] 16.96333
+```
+
+**MY TURN**
+
+Find the number of eruptions for which the waiting time was more than 80 minutes (faithful).
+
+```
+> sum(faithful$waiting > 80)
+[1] 84
 ```
