@@ -770,6 +770,10 @@ $VC
 
 ```
 
+If we don't like those default names, we can change them:
+`> names(mtl) <- c('four','six','eight')`
+
+
 ## Lesson 12: Another Look at the Nile Data
 
 `> plot(Nile)`
@@ -798,4 +802,94 @@ There appear to be some unusually high values as well, e.g. one around 1875. Det
 > 1871+y-1
 [1] 1879
 ```
+## Lesson 14: Introduction to Base R Graphics
 
+The **read.table** function: reads a file in table format and creates a data frame from it.
+
+```
+> table <- read.table("https://raw.githubusercontent.com/matloff/fasteR/master/data/prgeng.txt", header=TRUE)
+
+> head(table)
+       age educ occ sex wageinc wkswrkd
+1 50.30082   13 102   2   75000      52
+2 41.10139    9 101   1   12300      20
+3 24.67374    9 102   2   15400      52
+
+> plot(table$age, table$wageinc)
+```
+
+<img src="img/L14-1.gif" />
+
+Oh no, the dreaded Black Screen Problem! There are about 20,000 data points, thus filling certain parts of the screen. So, let's just plot a random sample, say 200.
+
+The **sample** function: takes a sample of the specified size from the elements of x &rarr; sample(x, size, ...)
+
+```
+# Random sample of size 200 from the range 1:20.000 
+> index <- sample(1:nrow(table), 200)
+
+# New table with 200 rows
+> table200 <- table[index,]
+
+# New plot
+> plot(table200$age, table200$wageinc)
+```
+
+<img src="img/L14-2.gif" />
+
+We can break things down by gender, via color coding:
+
+```
+> plot(table200$age, table200$wageinc, col=as.factor(table200$sex), xlab="Age", ylab="Income")
+```
+
+<img src="img/L14-3.gif" />
+
+Note that pe200$sex is a numeric vector, but *col* requires an R factor; the function **as.factor** does the conversion.
+
+**MY TURN**
+
+Try some scatter plots on various datasets. I suggest first using the above data with wage against age again, but this time color-coding by education level. (By the way, 1-9 codes no college; 10-12 means some college; 13 is a bachelor's degree, 14 a master's, 15 a professional degree and 16 is a doctorate.)
+
+```
+# Red: people with at least a BSc
+> plot(table200$age, table200$wageinc, col=as.factor(table200$educ>12))
+```
+
+<img src="img/L14-4.gif" />
+
+## Lesson 15: More on Base Graphics
+
+First we use split to separate the data by gender:
+
+```
+> wageBySex <- split(table$wageinc, table$sex)
+
+> dm <- density(wageBySex$`1`)
+> dw <- density(wageBySex$`2`)
+
+> plot(dw, col="red") # Women red
+> points(dm,cex=0.2)
+```
+
+<img src="img/L15-1.gif" />
+
+Why did we call the **points** function instead of plot in that second line? The issue is that calling plot again would destroy the first plot; we merely want to add points to the existing graph.
+
+**MY TURN**
+
+Try plotting multiple such curves on the same graph, for other data.
+
+```
+# Split Age by Sex
+> ageBySex <- split(table$age, table$sex)
+
+# Distribution for Age
+> dw <- density(ageBySex$`2`)
+> dm <- density(ageBySex$`1`)
+
+> plot(dw, col="purple")
+> points(dm, col="blue", cex=0.2)
+```
+
+<img src="img/L15-2.gif" />
