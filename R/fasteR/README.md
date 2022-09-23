@@ -15,9 +15,9 @@ The following are my notes and exercises from the Norm Matloff's R course.
 * [Lesson 10: Data Cleaning](#lesson-10-data-cleaning)
 * [Lesson 11: The R List Class](#lesson-11-the-r-list-class)
 * [Lesson 12: Another Look at the Nile Data](#lesson-12-another-look-at-the-nile-data)
-* [Lesson 14: Introduction to Base R Graphics]()
-* [Lesson 15: More on Base Graphics]()
-* [Lesson 16: Writing Your Own Functions]()
+* [Lesson 14: Introduction to Base R Graphics](#lesson-14-introduction-to-base-r-graphics)
+* [Lesson 15: More on Base Graphics](#lesson-15-more-on-base-graphics)
+* [Lesson 16: Writing Your Own Functions](#lesson-16-writing-your-own-functions)
 * [Lesson 17: For Loops]()
 * [Lesson 18: Functions with Blocks]()
 * [Lesson 19: Text Editing and IDes]()
@@ -893,3 +893,55 @@ Try plotting multiple such curves on the same graph, for other data.
 ```
 
 <img src="img/L15-2.gif" />
+
+## Lesson 16: Writing Your Own Functions
+
+Say we want the mean of the elements in the Nile data larger than 1200.
+
+```
+> Nile[Nile > 1200]
+[1] 1210 1230 1370 1210 1250 1260 1220
+> mean(Nile[Nile > 1200])
+[1] 1250
+
+> mgd <- function(x,d) mean(x[x > d])
+> mgd(Nile,1200)
+[1] 1250
+```
+
+**MY TURN**
+
+Write a function cgd() returning the count of the number of elements in x that are greater than d.
+```
+> sum(Nile > 1200)
+[1] 7
+
+> cgd <- function(x,d) sum(x>d)
+> cgd(Nile, 1200)
+[1] 7
+```
+
+Write a function n0(x), that returns the number of 0s in the vector x.
+```
+# Random vector, size 50
+> vect <- sample(0:10, 50, TRUE)
+# There are three 0s
+> vect[vect == 0]
+[1] 0 0 0
+
+> n0 <- function(x) sum(x==0)
+> n0(vect)
+[1] 3
+```
+
+Write a function hld(x,d), which draws a histogram for those elements in the vector x that are less than d.
+```
+# Random vector, size 100
+> v <- sample(1:100, 100, TRUE)
+
+> hld <- function(x,d) hist(x[x<d])
+
+> hld(v,50)
+```
+
+<img src="img/L16-1.gif" />
