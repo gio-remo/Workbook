@@ -18,7 +18,7 @@ The following are my notes and exercises from the Norm Matloff's R course.
 * [Lesson 14: Introduction to Base R Graphics](#lesson-14-introduction-to-base-r-graphics)
 * [Lesson 15: More on Base Graphics](#lesson-15-more-on-base-graphics)
 * [Lesson 16: Writing Your Own Functions](#lesson-16-writing-your-own-functions)
-* [Lesson 17: For Loops]()
+* [Lesson 17: For Loops](#lesson-17-for-loops)
 * [Lesson 18: Functions with Blocks]()
 * [Lesson 19: Text Editing and IDes]()
 * [Lesson 20: If, Else, Ifelse]()
