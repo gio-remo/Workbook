@@ -945,3 +945,45 @@ Write a function hld(x,d), which draws a histogram for those elements in the vec
 ```
 
 <img src="img/L16-1.gif" />
+
+## Lesson 17: 'For' Loops
+
+The Pima dataset containes some 0s that should be recoded.
+
+How many 0s for each column?
+
+```
+> pima <- read.csv("http://heather.cs.ucdavis.edu/FasteR/data/Pima.csv")
+
+> for(i in 1:9) print(sum(pima[,i]==0))
+[1] 111
+[1] 5
+[1] 35
+[1] 227
+[1] 374
+[1] 11
+[1] 0
+[1] 0
+[1] 500
+```
+
+Only in some columns 0s are legitimate, therefore we only need to recode 0s in part of the columns.
+
+```
+> for(i in 2:6) pima[pima[,i]==0, i] <- NA
+
+OR
+
+> for(i in 2:6) {
++ zero <- which(pima[,i]==0)
++ pima[zero, i] <- NA
++ }
+
+# Check
+> for(i in 2:6) print(sum(pima[,i]==0, na.rm=TRUE))
+[1] 0
+[1] 0
+[1] 0
+[1] 0
+[1] 0
+```
