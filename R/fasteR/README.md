@@ -19,10 +19,9 @@ The following are my notes and exercises from the Norm Matloff's R course.
 * [Lesson 15: More on Base Graphics](#lesson-15-more-on-base-graphics)
 * [Lesson 16: Writing Your Own Functions](#lesson-16-writing-your-own-functions)
 * [Lesson 17: For Loops](#lesson-17-for-loops)
-* [Lesson 18: Functions with Blocks]()
-* [Lesson 19: Text Editing and IDes]()
-* [Lesson 20: If, Else, Ifelse]()
-* [Lesson 21: Do Pro Athletes Keep Fit?]()
+* [Lesson 18: Functions with Blocks](#lesson-18-functions-with-blocks)
+* [Lesson 20: If, Else, Ifelse](#lesson-20-if-else-ifelse)
+* [Lesson 21: Do Pro Athletes Keep Fit?](#lesson-21-do-professional-athletes-keep-fit)
 * [Lesson 22: Linear Regression Analysis, I]()
 * [Lesson 23: S3 Classes]()
 * [Lesson 24: Baseball Player Analysis (cont'd.)]()
@@ -987,3 +986,195 @@ OR
 [1] 0
 [1] 0
 ```
+
+## Lesson 18: Functions with Blocks
+
+Write a function that replaces 0s by NAs in specified columns in general data frames.
+
+```
+# How many 0s in col 2
+> which(pima[,2]==0)
+[1]  76 183 343 350 503
+
+> conv <- function(d, cols)
++ {
++ for(i in cols)
++ {
++ rowzeros <- which(d[,i] == 0)
++ d[rowzeros, i] <- NA
++ }
++ }
+
+# Return pima with col 2 adjusted
+> pima <- conv(pima,2)
+
+# Check
+> which(pima[,2]==0)
+integer(0)
+```
+
+**MY TURN**
+
+Write a function with call form countNAs(dfr), which prints the numbers of NAs in each column of the data frame dfr. You'll need to use the built-in is.na() functon. Test it on a small artificial dataset that you create.
+
+```
+# New data frame
+> n <- 100
+> df <- data.frame(
++ id = 1:n,
++ sex = sample(c("M","F"), n, replace=TRUE, prob=c(0.5,0.5)),
++ heights = sample(150:210, n, replace=TRUE))
+
+# Adding random NAs
+df[,-1] <- apply(df[,-1], 2, function(x){x[sample(1:n, 5)]<-NA; x})
+
+# Function
+> countNAs <- function(dfr)
++ {
++ apply(dfr, 2, function(x){sum(is.na(x))})
++ }
+
+# Check
+> countNAs(df)
+     id     sex heights 
+      0       5       5 
+```
+
+## Lesson 20: If, Else, Ifelse
+
+Suppose we wish to color-code the wage-age graph in an earlier lesson by educational attainment. Let's amalgamate all codes under 13, giving them the code 12.
+
+```
+> table <- read.table("https://raw.githubusercontent.com/matloff/fasteR/master/data/prgeng.txt", header=TRUE)
+
+# Before
+> head(table)
+       age educ occ sex wageinc wkswrkd
+1 50.30082   13 102   2   75000      52
+2 41.10139    9 101   1   12300      20
+3 24.67374    9 102   2   15400      52
+4 50.19951   11 100   1       0      52
+5 51.18112   11 100   2     160       1
+6 57.70413   11 100   1       0       0
+
+# If educ<13, then 12
+> for(i in 1:nrow(table))
++ {
++     if(table$educ[i] < 13)
++         table$educ[i] <- 12
++ }
+
+# After
+> head(table)
+       age educ occ sex wageinc wkswrkd
+1 50.30082   13 102   2   75000      52
+2 41.10139   12 101   1   12300      20
+3 24.67374   12 102   2   15400      52
+4 50.19951   12 100   1       0      52
+5 51.18112   12 100   2     160       1
+6 57.70413   12 100   1       0       0
+
+# OR using ifelse()
+
+> edu <- table$educ
+
+> table$educ <- ifelse(edu < 13, 12, edu)
+```
+
+We can now produce the desired graph:
+
+```
+> plot(table$age, table$wageinc, col=table$educ)
+```
+
+<img src="img/L20-1.gif" width="300">
+
+Say we wish to recode the Nile data to a new vector nile, with values 1, 2 and 3, for the cases in which the value is less than 800, between 800 and 1150 inclusive, or greater than 1150.
+
+```
+> nile <- ifelse(Nile >= 800 & Nile <= 1150, 2, 3)
+> nile <- ifelse(Nile < 800, 1, nile)
+
+> table(nile)
+nile
+ 1  2  3 
+26 62 12
+```
+
+**MY TURN**
+
+Write a for loop version of the Nile example above.
+
+```
+> nile <- Nile
+
+> for(i in 1:length(nile))
++ {
++     if(nile[i] < 800) nile[i] <- 1
++     if(nile[i] >= 800 & nile[i] <= 1150) nile[i] <- 2
++     if(nile[i] > 1150) nile[i] <- 3
++ }
+
+> table(nile)
+nile
+ 1  2  3 
+26 62 12 
+```
+
+## Lesson 21: Do Professional Athletes Keep Fit?
+
+Many people gain weight as they age. But what about professional athletes? Let's explore this using data on professional baseball players.
+
+```
+> mlb <- read.table("https://raw.githubusercontent.com/matloff/fasteR/master/data/mlb.txt", header=TRUE)
+
+> age <- round(mlb$Age)
+
+> groups <- tapply(mlb$Weight, age, mean)
+```
+
+Let's plot the means against age.
+
+```
+> plot(23:35,groups[3:15])
+```
+
+<img src="img/L21-1.gif" width="300">
+
+**MY TURN**
+
+Use tapply to find the mean weight for each position; is the stereotype of the "beefy" catcher accurate, i.e. is the mean weight for that position higher than for the others?
+
+```
+> meanpos <- tapply(mlb$Weight, mlb$Position, mean)
+
+> meanpos
+         Catcher    First_Baseman 
+        204.3289         213.1091 
+      Outfielder   Relief_Pitcher 
+        199.1134         203.5175 
+  Second_Baseman        Shortstop 
+        184.3448         182.9231 
+Starting_Pitcher    Third_Baseman 
+        205.1636         200.9556
+
+> barplot(meanpos, space=0.5, cex.names = 0.5, ylim = c(150,250), xpd=FALSE)
+```
+
+<img src="img/L21-2.gif" width="300">
+
+Plot the number of players at each age group, to visualize the ages at which the bulk of the players fall.
+
+```
+> groupage <- tapply(mlb$Name, age, length)
+
+> groupage
+ 21  22  23  24  25  26  27  28  29  30  31  32  33  34  35  36  37  38  39  40  41  42 
+  2  20  58  80 103 104 106  84  80  74  70  44  44  32  32  22  20  12   6   7   9   2 
+ 43  44  49 
+  2   1   1 
+
+> plot(21:40, groupage[1:20])
+```
+
+<img src="img/L21-3.gif" width="300">
