@@ -1178,3 +1178,123 @@ Plot the number of players at each age group, to visualize the ages at which the
 ```
 
 <img src="img/L21-3.gif" width="300">
+
+## Lesson 22: Linear Regression Analysis, I
+
+There is a population mean weight for each age group. It is assumed that those population means, when plotted against age, lie on some straight line.
+
+We need to use the data to estimate the slope and intercept of that straight line, which R's **lm** ("linear model") function does for us.
+
+```
+> lm(Weight ~ Age, data = mlb)
+
+Call:
+lm(formula = Weight ~ Age, data = mlb)
+
+Coefficients:
+(Intercept)          Age  
+   181.4366       0.6936
+
+# Plot avg Weights over ages
+> plot(23:35, groups[3:15])
+```
+
+<img src="img/L22-1.gif" width="300">
+
+```
+# Adding regression line
+> abline(181.4366,0.6936)
+```
+
+<img src="img/L22-2.gif" width="300">
+
+**MY TURN**
+
+In the mtcars data, fit a linear model of the regression of MPG against weight; what is the estimated effect of 100 pounds of extra weight?
+
+```
+> head(mtcars)
+                   mpg cyl disp  hp drat    wt  qsec vs am gear carb
+Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
+Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
+Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
+Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
+Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
+Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1
+
+# mpg = Miles/(US) gallon
+# wt = Weight (1000 lbs)
+
+> plot(mtcars$wt, mtcars$mpg)
+```
+
+<img src="img/L22-3.gif" width="300">
+
+```
+> lm(mtcars$mpg ~ mtcars$wt, mtcars)
+
+Call:
+lm(formula = mtcars$mpg ~ mtcars$wt, data = mtcars)
+
+Coefficients:
+(Intercept)    mtcars$wt  
+     37.285       -5.344
+
+# 100 pounds of extra weight will lower the mpg of 0.5344 => Weight (wt) has a negative effect on mpg efficiency. 1000 extra pounds lower mpg of 5.344 
+
+> abline(37.285, -5.344, col="blue")
+
+# OR
+
+> reg <- lm(mtcars$mpg ~ mtcars$wt, mtcars)
+> abline(reg, col="blue")
+```
+
+<img src="img/L22-4.gif" width="300">
+
+## Lesson 23: S3 classes
+
+Now, what about our original question -- do baseball players gain weight as they age?
+
+```
+> lmout <- lm(Weight ~ Age, data=mlb)
+> str(lmout)
+List of 12
+ $ coefficients : Named num [1:2] 181.437 0.694
+```
+
+The answer appears to be yes; for each additional year of age, the estimated mean age increases by about 0.7 pound.
+
+One might ask, Shouldn't we also account for a player's height, not just his age? After all, taller people tend to be heavier.
+
+```
+> lm(Weight ~ Age + Height, data=mlb)
+
+Call:
+lm(formula = Weight ~ Age + Height, data = mlb)
+
+Coefficients:
+(Intercept)          Age       Height  
+  -187.6382       0.9115       4.9236
+```
+
+So, under this more refined analysis, things are even more pessimistic; players on average gain about 0.9 pounds per year. And by the way, an extra inch of height corresponds on average to about 4.9 pounds of extra weight; taller players are indeed heavier, as we surmized.
+
+**MY TURN**
+
+In the mtcars data, fit a linear model of the regression of MPG against weight and horsepower; what is the estimated effect of 100 pounds of extra weight, for fixed horsepower?
+
+```
+> lm(mpg ~ wt + hp, data=mtcars)
+
+Call:
+lm(formula = mpg ~ wt + hp, data = mtcars)
+
+Coefficients:
+(Intercept)           wt           hp  
+   37.22727     -3.87783     -0.03177
+
+# mpg = Miles/(US) gallon
+# wt = Weight (1000 lbs)
+# hp = Gross horsepower
+``` 
