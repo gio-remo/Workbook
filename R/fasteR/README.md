@@ -22,10 +22,9 @@ The following are my notes and exercises from the Norm Matloff's R course.
 * [Lesson 18: Functions with Blocks](#lesson-18-functions-with-blocks)
 * [Lesson 20: If, Else, Ifelse](#lesson-20-if-else-ifelse)
 * [Lesson 21: Do Pro Athletes Keep Fit?](#lesson-21-do-professional-athletes-keep-fit)
-* [Lesson 22: Linear Regression Analysis, I]()
-* [Lesson 23: S3 Classes]()
-* [Lesson 24: Baseball Player Analysis (cont'd.)]()
-* [Lesson 25: R Packages, CRAN, Etc.]()
+* [Lesson 22: Linear Regression Analysis, I](#lesson-22-linear-regression-analysis-i)
+* [Lesson 23: S3 Classes](#lesson-23-s3-classes)
+* [Lesson 24: Baseball Player Analysis (cont'd.)](#lesson-24-baseball-player-analysis-contd)
 
 ---
 
@@ -1297,4 +1296,48 @@ Coefficients:
 # mpg = Miles/(US) gallon
 # wt = Weight (1000 lbs)
 # hp = Gross horsepower
-``` 
+```
+
+## Lesson 24: Baseball Player Analysis (cont'd.)
+
+We might wonder whether the regression lines differ much among player positions.
+
+```
+> mlb <- read.table("https://raw.githubusercontent.com/matloff/fasteR/master/data/mlb.txt", header=TRUE)
+
+> table(mlb$PosCategory)
+
+   Catcher  Infielder Outfielder    Pitcher 
+        76        210        194        535
+```
+
+Let's fit the regression lines separately for each position type!
+
+```
+# Splitting based on Pos and giving an index
+> rownum <- split(1:nrow(mlb), mlb$PosCategory)
+
+> str(rownum)
+List of 4
+ $ Catcher   : int [1:76] 1 2 3 35 36 66 67 68 101 102 ...
+ $ Infielder : int [1:210] 4 5 6 7 8 9 37 38 39 40 ...
+ $ Outfielder: int [1:194] 10 11 12 13 14 15 16 43 44 45 ...
+ $ Pitcher   : int [1:535] 17 18 19 20 21 22 23 24 25 26 ...
+
+# Table for results
+> results <- data.frame()
+
+
+> for(i in 1:length(rownum)){
++     rows <- rownum[[i]] # For i position, getting the rows of mlb
++     lmout <- lm(Weight ~ Age, data=mlb[rows,]) # Regression
++     results <- rbind(results, lmout$coefficients) # Concatenating results
++ }
+
+> results
+  X180.828029016113 X0.794925225995348
+1          180.8280          0.7949252
+2          170.2466          0.8589593
+3          176.2884          0.7883343
+4          185.5994          0.6543904
+```
