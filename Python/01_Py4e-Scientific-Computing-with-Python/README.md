@@ -1,4 +1,4 @@
-## Notes and exercises from the _Py4e_ and _freeCodeCamp_ "Scientific Computing with Python" course.
+## Notes from the Py4e, by Dr. Chuck
 
 Dr. Charles R. Severance (aka [Dr. Chuck](https://www.dr-chuck.com/)) is a CS professor at the University of Michigan.
 

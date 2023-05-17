@@ -1,8 +1,4 @@
-# Notes from fasteR
-
-The following are my notes and exercises from the Norm Matloff's R course.
-
-[fasteR](https://github.com/matloff/fasteR) - Norm Matloff
+**Index**
 
 * [Lesson 2: First R Steps](#lesson-2-first-r-steps)
 * [Lesson 3: Vectors and Indices](#lesson-3-vectors-and-indices)
